@@ -1,0 +1,35 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /api
+
+spring:
+  http:
+    converters:
+      preferred-json-mapper: gson
+  datasource:
+    url: jdbc:postgresql://localhost:5432/boilerplate
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties.hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc.lob.non_contextual_creation: true
+    open-in-view: false
+
+
+swagger:
+  enable: true
+  package: "com.springboot.template.controller"
+
+logging:
+  level:
+    root: ERROR
+    org.springframework: WARN
+    org.hibernate: WARN
+    com.springboot: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) %-40logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %-40logger{36} - %msg%n"

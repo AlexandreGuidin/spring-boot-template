@@ -1,0 +1,20 @@
+spring:
+  http:
+    converters:
+      preferred-json-mapper: gson
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    data-username: sa
+    data-password:
+  jpa:
+    database-platform: "org.hibernate.dialect.H2Dialect"
+    hibernate:
+      ddl-auto: create
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) %-40logger{36} - %msg%n"
