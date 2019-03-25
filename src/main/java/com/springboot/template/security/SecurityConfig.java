@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/**", "/swagger-ui.html").permitAll()
+                .antMatchers("/swagger", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/**", "/swagger-ui.html", "/csrf", "/").permitAll()
                 .antMatchers("/health").permitAll()
                 .antMatchers("/health/protected").authenticated()
                 .antMatchers("/health/protected/roles").hasAnyRole("ADMIN", "USER")

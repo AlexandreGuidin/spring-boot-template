@@ -22,6 +22,11 @@ spring:
 swagger:
   enable: ${ENABLE_SWAGGER:true}
   package: com.springboot.template.controller
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /swagger
 
 security:
   jwt:

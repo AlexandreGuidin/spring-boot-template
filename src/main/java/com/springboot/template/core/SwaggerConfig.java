@@ -3,6 +3,8 @@ package com.springboot.template.core;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.MediaType;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,12 +18,13 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Collections;
+import java.util.List;
 
 import static io.swagger.models.auth.In.HEADER;
 import static java.util.Collections.singletonList;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
-
+@PropertySource("classpath:application.yml")
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -36,23 +39,26 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .securitySchemes(singletonList(new ApiKey("JWT", AUTHORIZATION, HEADER.name())))
-                .securityContexts(Collections.singletonList(
-                        SecurityContext.builder()
-                                .securityReferences(
-                                        singletonList(SecurityReference.builder()
-                                                .reference("JWT")
-                                                .scopes(new AuthorizationScope[0])
-                                                .build()
-                                        )
-                                )
-                                .build())
-                )
+                .securityContexts(securityContext())
+                .produces(Collections.singleton(MediaType.APPLICATION_JSON_VALUE))
+                .consumes(Collections.singleton((MediaType.APPLICATION_JSON_VALUE)))
+                .useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(swaggerPackage))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metadata())
                 .enable(enableSwagger);
+    }
+
+    private List<SecurityContext> securityContext() {
+        SecurityReference jwt = SecurityReference.builder()
+                .reference("JWT")
+                .scopes(new AuthorizationScope[0])
+                .build();
+
+        SecurityContext securityContext = SecurityContext.builder().securityReferences(singletonList(jwt)).build();
+        return Collections.singletonList(securityContext);
     }
 
     private ApiInfo metadata() {
