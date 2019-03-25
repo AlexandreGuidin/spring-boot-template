@@ -5,6 +5,7 @@ import com.springboot.template.core.security.SecurityParams;
 import com.springboot.template.core.security.dto.AuthenticatedUser;
 import com.springboot.template.core.security.dto.LoginRequest;
 import com.springboot.template.core.security.dto.LoginResponse;
+import com.springboot.template.util.GsonUtils;
 import com.springboot.template.util.IOUtils;
 import com.springboot.template.util.JwtUtils;
 import org.springframework.http.HttpHeaders;
@@ -36,7 +37,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private UsernamePasswordAuthenticationToken getLoginRequest(HttpServletRequest request) {
         return IOUtils.requestBodyString(request)
-                .map(body -> new Gson().fromJson(body, LoginRequest.class))
+                .map(body -> GsonUtils.castJson(body, LoginRequest.class))
                 .map(LoginRequest::getToken)
                 .orElse(new UsernamePasswordAuthenticationToken(null, null, null));
     }
