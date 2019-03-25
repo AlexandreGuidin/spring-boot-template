@@ -1,4 +1,4 @@
-package com.springboot.template.security.dto;
+package com.springboot.template.core.security.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

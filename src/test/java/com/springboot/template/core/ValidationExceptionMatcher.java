@@ -1,6 +1,6 @@
 package com.springboot.template.core;
 
-import com.springboot.template.exception.ValidationException;
+import com.springboot.template.core.exception.ValidationException;
 import com.springboot.template.model.ValidationError;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;

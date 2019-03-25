@@ -1,4 +1,4 @@
-package com.springboot.template.exception;
+package com.springboot.template.core.exception;
 
 import com.springboot.template.model.ValidationError;
 

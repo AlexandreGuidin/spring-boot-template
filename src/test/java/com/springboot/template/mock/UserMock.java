@@ -1,6 +1,6 @@
 package com.springboot.template.mock;
 
-import com.springboot.template.dto.enuns.RoleEnum;
+import com.springboot.template.model.enuns.RoleEnum;
 import com.springboot.template.entity.UserEntity;
 
 public class UserMock {

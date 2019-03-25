@@ -1,7 +1,7 @@
-package com.springboot.template.security.filter;
+package com.springboot.template.core.security.filter;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.springboot.template.security.SecurityParams;
+import com.springboot.template.core.security.SecurityParams;
 import com.springboot.template.util.JwtUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;

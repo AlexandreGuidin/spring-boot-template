@@ -1,4 +1,4 @@
-package com.springboot.template.security;
+package com.springboot.template.core.security;
 
 import com.springboot.template.Application;
 import com.springboot.template.core.BaseControllerTest;

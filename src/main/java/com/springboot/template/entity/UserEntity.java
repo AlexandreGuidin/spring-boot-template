@@ -1,6 +1,6 @@
 package com.springboot.template.entity;
 
-import com.springboot.template.dto.enuns.RoleEnum;
+import com.springboot.template.model.enuns.RoleEnum;
 
 import javax.persistence.*;
 

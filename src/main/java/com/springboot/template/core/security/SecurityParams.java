@@ -1,4 +1,4 @@
-package com.springboot.template.security;
+package com.springboot.template.core.security;
 
 import org.springframework.beans.factory.annotation.Value;
 

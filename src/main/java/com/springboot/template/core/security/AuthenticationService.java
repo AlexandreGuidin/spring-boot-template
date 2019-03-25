@@ -1,7 +1,7 @@
-package com.springboot.template.security;
+package com.springboot.template.core.security;
 
 import com.springboot.template.repository.UserRepository;
-import com.springboot.template.security.dto.AuthenticatedUser;
+import com.springboot.template.core.security.dto.AuthenticatedUser;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

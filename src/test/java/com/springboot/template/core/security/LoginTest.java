@@ -1,10 +1,10 @@
-package com.springboot.template.security;
+package com.springboot.template.core.security;
 
 import com.springboot.template.Application;
 import com.springboot.template.core.BaseControllerTest;
 import com.springboot.template.mock.LoginMock;
-import com.springboot.template.security.dto.LoginRequest;
-import com.springboot.template.security.dto.LoginResponse;
+import com.springboot.template.core.security.dto.LoginRequest;
+import com.springboot.template.core.security.dto.LoginResponse;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

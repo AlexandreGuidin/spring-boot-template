@@ -1,7 +1,7 @@
-package com.springboot.template.security;
+package com.springboot.template.core.security;
 
-import com.springboot.template.security.filter.AuthorizationFilter;
-import com.springboot.template.security.filter.LoginFilter;
+import com.springboot.template.core.security.filter.AuthorizationFilter;
+import com.springboot.template.core.security.filter.LoginFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;

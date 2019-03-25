@@ -2,8 +2,8 @@ package com.springboot.template.controller;
 
 import com.springboot.template.Application;
 import com.springboot.template.core.BaseControllerTest;
-import com.springboot.template.dto.HealthDTO;
-import com.springboot.template.exception.ApiException;
+import com.springboot.template.model.HealthModel;
+import com.springboot.template.core.exception.ApiException;
 import com.springboot.template.service.HealthService;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,8 +21,8 @@ public class HealthControllerTest extends BaseControllerTest {
     @MockBean
     private HealthService service;
 
-    private HealthDTO mock() {
-        return new HealthDTO()
+    private HealthModel mock() {
+        return new HealthModel()
                 .setStatus("UP")
                 .setTime("2018-01-01T00:00:00.305Z");
     }
@@ -31,10 +31,10 @@ public class HealthControllerTest extends BaseControllerTest {
     public void get() {
         when(service.get()).thenReturn(mock());
 
-        HealthDTO response = request("/health", HttpMethod.GET)
+        HealthModel response = request("/health", HttpMethod.GET)
                 .getResponse()
                 .assertStatus(HttpStatus.OK)
-                .getResponse(HealthDTO.class);
+                .getResponse(HealthModel.class);
 
         assertThat(response.getStatus()).isEqualTo("UP");
         assertThat(response.getTime()).isEqualTo("2018-01-01T00:00:00.305Z");
@@ -54,10 +54,10 @@ public class HealthControllerTest extends BaseControllerTest {
     public void getProtected() {
         when(service.get()).thenReturn(mock());
 
-        HealthDTO response = request("/health/protected", HttpMethod.GET)
+        HealthModel response = request("/health/protected", HttpMethod.GET)
                 .getResponse()
                 .assertStatus(HttpStatus.OK)
-                .getResponse(HealthDTO.class);
+                .getResponse(HealthModel.class);
 
         assertThat(response.getStatus()).isEqualTo("UP");
         assertThat(response.getTime()).isEqualTo("2018-01-01T00:00:00.305Z");
@@ -75,10 +75,10 @@ public class HealthControllerTest extends BaseControllerTest {
     public void rolesProtected() {
         when(service.get()).thenReturn(mock());
 
-        HealthDTO response = request("/health/protected/roles", HttpMethod.GET)
+        HealthModel response = request("/health/protected/roles", HttpMethod.GET)
                 .getResponse()
                 .assertStatus(HttpStatus.OK)
-                .getResponse(HealthDTO.class);
+                .getResponse(HealthModel.class);
 
         assertThat(response.getStatus()).isEqualTo("UP");
         assertThat(response.getTime()).isEqualTo("2018-01-01T00:00:00.305Z");

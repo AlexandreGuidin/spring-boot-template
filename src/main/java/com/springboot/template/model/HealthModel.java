@@ -1,6 +1,6 @@
-package com.springboot.template.dto;
+package com.springboot.template.model;
 
-public class HealthDTO {
+public class HealthModel {
     private String status;
     private String time;
 
@@ -8,7 +8,7 @@ public class HealthDTO {
         return status;
     }
 
-    public HealthDTO setStatus(String status) {
+    public HealthModel setStatus(String status) {
         this.status = status;
         return this;
     }
@@ -17,7 +17,7 @@ public class HealthDTO {
         return time;
     }
 
-    public HealthDTO setTime(String time) {
+    public HealthModel setTime(String time) {
         this.time = time;
         return this;
     }

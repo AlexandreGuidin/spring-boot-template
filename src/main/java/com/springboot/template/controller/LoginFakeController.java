@@ -1,6 +1,6 @@
 package com.springboot.template.controller;
 
-import com.springboot.template.security.dto.LoginRequest;
+import com.springboot.template.core.security.dto.LoginRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

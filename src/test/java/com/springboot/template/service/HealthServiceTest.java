@@ -1,6 +1,6 @@
 package com.springboot.template.service;
 
-import com.springboot.template.dto.HealthDTO;
+import com.springboot.template.model.HealthModel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class HealthServiceTest {
 
     @Test
     public void get() {
-        HealthDTO healthDTO = service.get();
+        HealthModel healthDTO = service.get();
 
         assertThat(healthDTO.getStatus()).isEqualTo("UP");
         assertThat(healthDTO.getTime()).isNotNull();

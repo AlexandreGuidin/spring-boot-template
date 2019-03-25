@@ -1,7 +1,7 @@
 package com.springboot.template.core;
 
-import com.springboot.template.exception.ApiException;
-import com.springboot.template.exception.ValidationException;
+import com.springboot.template.core.exception.ApiException;
+import com.springboot.template.core.exception.ValidationException;
 import com.springboot.template.model.ValidationError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

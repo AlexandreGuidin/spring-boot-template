@@ -1,6 +1,6 @@
 package com.springboot.template;
 
-import com.springboot.template.security.SecurityParams;
+import com.springboot.template.core.security.SecurityParams;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

@@ -24,7 +24,6 @@ import static io.swagger.models.auth.In.HEADER;
 import static java.util.Collections.singletonList;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
-@PropertySource("classpath:application.yml")
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

@@ -1,6 +1,6 @@
 package com.springboot.template.mock;
 
-import com.springboot.template.security.dto.AuthenticatedUser;
+import com.springboot.template.core.security.dto.AuthenticatedUser;
 
 public class LoginMock {
 

@@ -1,4 +1,4 @@
-package com.springboot.template.security.dto;
+package com.springboot.template.core.security.dto;
 
 public class LoginResponse {
 

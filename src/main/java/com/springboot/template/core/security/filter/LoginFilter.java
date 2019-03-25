@@ -1,10 +1,10 @@
-package com.springboot.template.security.filter;
+package com.springboot.template.core.security.filter;
 
 import com.google.gson.Gson;
-import com.springboot.template.security.SecurityParams;
-import com.springboot.template.security.dto.AuthenticatedUser;
-import com.springboot.template.security.dto.LoginRequest;
-import com.springboot.template.security.dto.LoginResponse;
+import com.springboot.template.core.security.SecurityParams;
+import com.springboot.template.core.security.dto.AuthenticatedUser;
+import com.springboot.template.core.security.dto.LoginRequest;
+import com.springboot.template.core.security.dto.LoginResponse;
 import com.springboot.template.util.IOUtils;
 import com.springboot.template.util.JwtUtils;
 import org.springframework.http.HttpHeaders;
