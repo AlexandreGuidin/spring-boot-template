@@ -2,6 +2,7 @@ package com.springboot.template.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.springboot.template.core.gson.ExcludeEstrategy;
 import com.springboot.template.core.gson.SwaggerConverter;
 import com.springboot.template.core.gson.ZonedDateTimeConverter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -28,7 +29,10 @@ public class GsonConfig {
 
         @Override
         public void customize(GsonBuilder gsonBuilder) {
-            gsonBuilder.registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeConverter())
+            gsonBuilder
+                    .addDeserializationExclusionStrategy(new ExcludeEstrategy())
+                    .addSerializationExclusionStrategy(new ExcludeEstrategy())
+                    .registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeConverter())
                     .registerTypeAdapter(Json.class, new SwaggerConverter());
         }
 

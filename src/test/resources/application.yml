@@ -11,9 +11,22 @@ spring:
     data-username: sa
     data-password:
   jpa:
-    database-platform: "org.hibernate.dialect.H2Dialect"
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create
+    properties.hibernate:
+      jdbc.lob.non_contextual_creation: true
+    open-in-view: false
+
+swagger:
+  enable: false
+  package: com.springboot.template.controller
+
+
+security:
+  jwt:
+    secret: V4CYY1ZzMH6g6tT2GqOtYABiieKuoHci
+    exp: 180
 
 logging:
   pattern:

@@ -22,4 +22,16 @@ public class HealthController {
     private HealthDTO get() {
         return service.get();
     }
+
+    @RequestMapping("/protected")
+    @GetMapping
+    private HealthDTO getProtected() {
+        return service.get();
+    }
+
+    @RequestMapping("/protected/roles")
+    @GetMapping
+    private HealthDTO rolesProtected() {
+        return service.get();
+    }
 }

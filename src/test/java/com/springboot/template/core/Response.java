@@ -21,6 +21,16 @@ public class Response {
         return this;
     }
 
+    public Response assertHeader(String name, String value) {
+        assertThat(result.getResponse().getHeader(name)).isEqualTo(value);
+        return this;
+    }
+
+    public Response assertHeaderContains(String name, String value) {
+        assertThat(result.getResponse().getHeader(name)).contains(value);
+        return this;
+    }
+
     public <T> Response assertEquals(Class<T> cls, Object expected) {
         assertThat(getResponse(cls)).isEqualTo(expected);
         return this;

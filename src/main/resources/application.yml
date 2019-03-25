@@ -8,21 +8,26 @@ spring:
     converters:
       preferred-json-mapper: gson
   datasource:
-    url: jdbc:postgresql://localhost:5432/boilerplate
+    url: jdbc:mysql://localhost:3306/templatedb
     username: postgres
     password: postgres
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     properties.hibernate:
-      dialect: org.hibernate.dialect.PostgreSQLDialect
       jdbc.lob.non_contextual_creation: true
+      dialect: org.hibernate.dialect.MySQL5Dialect
     open-in-view: false
 
-
 swagger:
-  enable: true
-  package: "com.springboot.template.controller"
+  enable: ${ENABLE_SWAGGER:true}
+  package: com.springboot.template.controller
+
+security:
+  jwt:
+    secret: ${SECURITY_SECRET:V4CYY1ZzMH6g6tT2GqOtYABiieKuoHci}
+    exp: 180
 
 logging:
   level:
