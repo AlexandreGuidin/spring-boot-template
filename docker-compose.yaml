@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=templatedb
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_ROOT_PASSWORD=mysql
+    ports:
+      - 3306:3306
+  template-api:
+    image: template-api
+    depends_on:
+      - mysql
+    ports:
+      - 8000:8000
+    environment:
+      - DB_URL=jdbc:mysql://mysql:3306/templatedb
