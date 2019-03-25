@@ -8,10 +8,9 @@ spring:
     converters:
       preferred-json-mapper: gson
   datasource:
-    url: jdbc:mysql://localhost:3306/templatedb
-    username: postgres
-    password: postgres
-    driver-class-name: com.mysql.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/templatedb}
+    username: ${DB_USER:mysql}
+    password: ${DB_PASSWORD:mysql}
   jpa:
     hibernate:
       ddl-auto: update

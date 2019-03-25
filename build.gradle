@@ -31,3 +31,21 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
+
+task projVersion {
+    doLast {
+        println project.version
+    }
+}
+
+task projName {
+    doLast {
+        println project.name
+    }
+}
+
+task versionedName {
+    doLast {
+        println project.name + '-' + project.version
+    }
+}

@@ -70,7 +70,7 @@ public class HealthControllerTest extends BaseControllerTest {
                 .assertStatus(HttpStatus.UNAUTHORIZED);
     }
 
-    @WithMockUser(roles = {"SYSTEM"})
+    @WithMockUser(roles = {"ADMIN"})
     @Test
     public void rolesProtected() {
         when(service.get()).thenReturn(mock());

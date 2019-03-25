@@ -1,7 +1,7 @@
 package com.springboot.template.security.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.Collections;
 
@@ -26,7 +26,7 @@ public class LoginRequest {
         return password;
     }
 
-    @ApiIgnore
+    @ApiModelProperty(hidden = true)
     public UsernamePasswordAuthenticationToken getToken() {
         return new UsernamePasswordAuthenticationToken(email, password, Collections.emptyList());
     }
