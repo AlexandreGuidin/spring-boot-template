@@ -12,6 +12,6 @@ public class HealthService {
     public HealthModel get() {
         return new HealthModel()
                 .setStatus("UP")
-                .setTime(ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE));
+                .setTime(ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
     }
 }
