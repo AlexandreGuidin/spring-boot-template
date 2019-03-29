@@ -10,6 +10,10 @@ public class ApiException extends RuntimeException {
         this.status = HttpStatus.INTERNAL_SERVER_ERROR.value();
     }
 
+    public ApiException(HttpStatus status) {
+        this.status = status.value();
+    }
+
     public ApiException(Integer status) {
         this.status = status;
     }
