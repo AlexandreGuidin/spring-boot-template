@@ -42,9 +42,13 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 
     private void manageAuthentication(String token) {
         DecodedJWT decodedToken = JwtUtils.decodeToken(token, securityParams.getSecret());
-        Long id = decodedToken.getClaim("id").as(Long.class);
 
-        UsernamePasswordAuthenticationToken authentication = Optional.ofNullable(decodedToken)
+        Long id = Optional.ofNullable(decodedToken)
+                .map(d -> d.getClaim("id").asString())
+                .map(Long::parseLong)
+                .orElse(null);
+
+        UsernamePasswordAuthenticationToken authentication = Optional.ofNullable(id)
                 .map(t -> new UsernamePasswordAuthenticationToken(t, null, Collections.emptyList()))
                 .orElse(null);
 
