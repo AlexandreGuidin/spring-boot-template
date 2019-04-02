@@ -2,9 +2,8 @@ package com.springboot.template.core.security;
 
 import com.springboot.template.Application;
 import com.springboot.template.core.BaseControllerTest;
-import com.springboot.template.mock.LoginMock;
 import com.springboot.template.core.security.dto.LoginRequest;
-import com.springboot.template.core.security.dto.LoginResponse;
+import com.springboot.template.mock.LoginMock;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -13,7 +12,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -29,14 +27,12 @@ public class LoginTest extends BaseControllerTest {
 
         LoginRequest login = new LoginRequest("test@test.com", "123");
 
-        LoginResponse response = request("/login", HttpMethod.POST)
+        request("/login", HttpMethod.POST)
                 .withBodyData(login)
                 .getResponse()
                 .assertStatus(HttpStatus.OK)
                 .assertHeaderContains(HttpHeaders.AUTHORIZATION, SecurityParams.TOKEN_PREFIX)
-                .getResponse(LoginResponse.class);
-
-        assertThat(response.getId()).isNotNull();
+                .assertJson("login.json");
     }
 
     @Test

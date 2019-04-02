@@ -8,6 +8,6 @@ public class LoginMock {
     }
 
     public static AuthenticatedUser mockAuthenticated() {
-        return new AuthenticatedUser(UserMock.mock());
+        return new AuthenticatedUser(UserMock.mock(1000L));
     }
 }
