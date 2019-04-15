@@ -27,7 +27,7 @@ public class Request {
     private HttpMethod method;
     private HashMap<String, List<String>> headers = new LinkedHashMap<>();
     private HashMap<String, List<String>> queryParams = new LinkedHashMap<>();
-    private String bodyData;
+    private String bodyData = "";
 
     Request(MockMvc mvc, Gson gson, String path, HttpMethod method) {
         this.mvc = mvc;
@@ -43,7 +43,7 @@ public class Request {
 
     public Request withBodyJson(String fileName) {
         try {
-            File file = ResourceUtils.getFile("classpath:json/" + fileName);
+            File file = ResourceUtils.getFile("classpath:" + fileName);
             String body = new String(Files.readAllBytes(file.toPath()));
             this.bodyData = new JsonParser().parse(body).toString();
             return this;

@@ -63,7 +63,7 @@ public class Response {
 
     public Response assertJson(String fileName) {
         try {
-            File file = ResourceUtils.getFile("classpath:json/" + fileName);
+            File file = ResourceUtils.getFile("classpath:" + fileName);
 
             String actual = result.getResponse().getContentAsString();
             String expected = new String(Files.readAllBytes(file.toPath()));

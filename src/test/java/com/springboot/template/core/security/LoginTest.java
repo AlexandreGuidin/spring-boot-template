@@ -32,7 +32,7 @@ public class LoginTest extends BaseControllerTest {
                 .getResponse()
                 .assertStatus(HttpStatus.OK)
                 .assertHeaderContains(HttpHeaders.AUTHORIZATION, SecurityParams.TOKEN_PREFIX)
-                .assertJson("login.json");
+                .assertJson("json/LoginSuccess.json");
     }
 
     @Test
