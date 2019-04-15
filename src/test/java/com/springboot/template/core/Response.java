@@ -1,6 +1,8 @@
 package com.springboot.template.core;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.util.ResourceUtils;
@@ -62,9 +64,24 @@ public class Response {
     public Response assertJson(String fileName) {
         try {
             File file = ResourceUtils.getFile("classpath:json/" + fileName);
-            String json = new String(Files.readAllBytes(file.toPath()));
-            String content = json.replaceAll("\\s+(?=((\\\\[\\\\\"]|[^\\\\\"])*\"(\\\\[\\\\\"]|[^\\\\\"])*\")*(\\\\[\\\\\"]|[^\\\\\"])*$)", "");
-            assertThat(result.getResponse().getContentAsString()).isEqualTo(content);
+
+            String actual = result.getResponse().getContentAsString();
+            String expected = new String(Files.readAllBytes(file.toPath()));
+
+            JsonParser parser = new JsonParser();
+            JsonElement expectedJson = parser.parse(expected);
+            JsonElement actualJson = parser.parse(actual);
+
+            assertThat(actualJson).isEqualTo(expectedJson);
+            return this;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Response assertBody(String body) {
+        try {
+            assertThat(result.getResponse().getContentAsString()).isEqualTo(body);
             return this;
         } catch (Exception e) {
             throw new RuntimeException(e);
