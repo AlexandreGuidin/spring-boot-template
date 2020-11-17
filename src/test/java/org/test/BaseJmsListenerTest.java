@@ -18,6 +18,8 @@ import org.springframework.jms.core.JmsTemplate;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.awaitility.Awaitility.await;
+
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
 public abstract class BaseJmsListenerTest extends CommonsTest {
@@ -69,7 +71,12 @@ public abstract class BaseJmsListenerTest extends CommonsTest {
         messages.forEach(m -> jmsTemplate.convertAndSend(queue, m));
     }
 
-    protected void sleep(Integer millis) throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(millis);
+    protected void assertQueueMessagesCount(String queue, Integer count) {
+        assertQueueMessagesCount(queue, count, 10);
+    }
+
+    protected void assertQueueMessagesCount(String queue, Integer count, Integer secondsTimeout) {
+        await().atMost(secondsTimeout, TimeUnit.SECONDS)
+                .until(() -> countQueueMessages(queue).equals(count));
     }
 }

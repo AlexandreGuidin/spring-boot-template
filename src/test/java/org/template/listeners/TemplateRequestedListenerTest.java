@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.test.BaseJmsListenerTest;
 
 import java.util.Arrays;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class TemplateRequestedListenerTest extends BaseJmsListenerTest {
 
@@ -13,20 +12,18 @@ public class TemplateRequestedListenerTest extends BaseJmsListenerTest {
     private final String dlq = "template-template_requested_dlq";
 
     @Test
-    public void receive_messages() throws InterruptedException {
-        sendMessages(queue, Arrays.asList(1,2));
+    public void receive_messages() {
+        sendMessages(queue, Arrays.asList(1, 2));
 
-        sleep(200);
-        assertThat(countQueueMessages(queue)).isEqualTo(0);
-        assertThat(countQueueMessages(dlq)).isEqualTo(0);
+        assertQueueMessagesCount(queue, 0);
+        assertQueueMessagesCount(dlq, 0);
     }
 
     @Test
-    public void receive_messages_dlq() throws InterruptedException {
+    public void receive_messages_dlq() {
         sendMessages(queue, Arrays.asList("a", "b"));
-        sleep(2000);
 
-        assertThat(countQueueMessages(queue)).isEqualTo(0);
-        assertThat(countQueueMessages(dlq)).isEqualTo(2);
+        assertQueueMessagesCount(queue, 0);
+        assertQueueMessagesCount(dlq, 2);
     }
 }
