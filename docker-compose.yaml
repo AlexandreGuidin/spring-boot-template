@@ -1,22 +1,27 @@
 version: '3'
-
 services:
-  mysql:
-    image: mysql
-    environment:
-      - MYSQL_DATABASE=templatedb
-      - MYSQL_USER=mysql
-      - MYSQL_PASSWORD=mysql
-      - MYSQL_ROOT_PASSWORD=mysql
+
+  postgres:
+    image: postgres:12-alpine
     ports:
-      - 3306:3306
-  template-api:
-    image: template-api
-    depends_on:
-      - mysql
-    ports:
-      - 8000:8000
+      - "5432:5432"
     environment:
-      - DB_URL=jdbc:mysql://mysql:3306/templatedb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=db_template
+
+  sqs:
+    image: s12v/elasticmq
+    ports:
+      - "9324:9324"
     volumes:
-      - ./log:/log
+      - ./elasticmq.conf:/etc/elasticmq/elasticmq.conf
+
+  mock:
+    image: rodolpheche/wiremock:2.26.3-alpine
+    ports:
+    - "5000:8080"
+    - "8443:8443"
+    volumes:
+    - ${PWD}/mock:/home/wiremock
+

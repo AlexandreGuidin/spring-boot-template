@@ -1,45 +1,47 @@
 server:
-  port: 8000
+  port: 8080
   servlet:
     context-path: /api
+  shutdown: graceful
 
 spring:
-  http:
-    converters:
-      preferred-json-mapper: gson
-  datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/templatedb}
-    username: ${DB_USER:mysql}
-    password: ${DB_PASSWORD:mysql}
+  liquibase:
+    change-log: classpath:liquibase/migrations.yaml
+  main:
+    banner-mode: off
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     properties.hibernate:
       jdbc.lob.non_contextual_creation: true
-      dialect: org.hibernate.dialect.MySQL5Dialect
+      jdbc.batch_size: 50
+      dialect: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
 
-swagger:
-  enable: ${ENABLE_SWAGGER:true}
-  package: com.springboot.template.controller
-springfox:
-  documentation:
-    swagger:
-      v2:
-        path: /swagger
+datasource:
+  name: ${DB_NAME:db_template}
+  host: ${DB_HOST:localhost:5432}
+  username: ${DB_USER:root}
+  password: ${DB_PASSWORD:root}
 
-security:
-  jwt:
-    secret: ${SECURITY_SECRET:V4CYY1ZzMH6g6tT2GqOtYABiieKuoHci}
-    exp: 180
+springdoc:
+  api-docs:
+    enabled: ${ENABLE_OPENAPI:true}
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
 
-logging:
-  level:
-    root: ERROR
-    org.springframework: WARN
-    org.hibernate: WARN
-    com.springboot: INFO
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) %-40logger{36} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %-40logger{36} - %msg%n"
-  file: log/template.log
+aws:
+  sqs:
+    max-tries: ${AWS_SQS_MAX_TRIES:1}
+    local-endpoint: ${AWS_SQS_ENDPOINT:http://localhost:9324}
+  region: ${AWS_REGION:us-east-1}
+
+# APP ENVIRONMENT
+app:
+  name: org.template
+  environment: ${ENVIRONMENT:local}
+  security:
+    jwt-secret: ${JWT_SECRET:secret}
+    jwt-expiration-time-minutes: ${JWT_EXPIRATION_TIME_MINUTES:30}
+    api-user-name: ${API_USER:user}
+    api-pass: ${API_PASSWORD:password}

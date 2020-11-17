@@ -1,11 +1,1 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-        mavenLocal()
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
-    }
-}
-
-rootProject.name = 'template'
+rootProject.name = 'org.template'
