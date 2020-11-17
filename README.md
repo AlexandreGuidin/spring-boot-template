@@ -30,6 +30,7 @@ Open API docs
 
 ## Common commands
 ```
+Tests: ./gradlew build (need docker-compose up)
 Build: ./gradlew build
 Docker Build: ./cmds/build-image.sh
 Run docker compose: docker-compose up
