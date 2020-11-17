@@ -77,7 +77,9 @@ public class ControllerAdvice {
 
     @ExceptionHandler(ApiException.class)
     public ResponseEntity<?> handleApiException(ApiException ex) {
-        logger.error("handleApiException", ex);
+        if (ex.logError()) {
+            logger.error("handleApiException", ex);
+        }
         return ResponseEntity.status(ex.getStatus()).build();
     }
 

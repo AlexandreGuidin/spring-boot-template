@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -23,6 +24,7 @@ public class UserService {
 
     public void register(UserRegisterRequest request) {
         UserEntity entity = new UserEntity()
+                .setId(UUID.randomUUID())
                 .setEmail(request.getEmail())
                 .setName(request.getName())
                 .setPassword(encoder.encode(request.getPassword()))

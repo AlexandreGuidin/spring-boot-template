@@ -1,0 +1,12 @@
+[
+  {
+    "field": "email",
+    "message": "invalid",
+    "value": "mail"
+  },
+  {
+    "field": "name",
+    "message": "must not be empty",
+    "value": ""
+  }
+]

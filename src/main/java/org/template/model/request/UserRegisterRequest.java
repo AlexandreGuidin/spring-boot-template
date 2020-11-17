@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 
 public class UserRegisterRequest {
 
-    @Email
+    @Email(message = "invalid")
     private String email;
 
     @NotEmpty

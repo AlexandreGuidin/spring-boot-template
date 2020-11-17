@@ -1,5 +1,6 @@
 package org.template.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.template.core.openapi.*;
 import org.template.model.request.UserRegisterRequest;
 import org.template.model.response.UserResponse;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 @Tag(name = "User")
 public class UserController {
 
@@ -27,6 +29,7 @@ public class UserController {
     @Unauthorized
     @UnprocessableEntity
     @InternalServerError
+    @SecurityRequirement(name = "bearerAuth")
     public void register(@Valid @RequestBody UserRegisterRequest request) {
         service.register(request);
     }
@@ -37,6 +40,7 @@ public class UserController {
     @Unauthorized
     @UnprocessableEntity
     @InternalServerError
+    @SecurityRequirement(name = "bearerAuth")
     public UserResponse findByEmail(@NotNull @PathVariable String email) {
         return service.findByEmail(email);
     }
