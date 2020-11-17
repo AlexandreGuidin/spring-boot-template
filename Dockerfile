@@ -1,5 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM adoptopenjdk/openjdk11-openj9:alpine-jre
 
-ADD build/libs/template-1.0.0.jar application.jar
-
+ADD build/libs/application.jar application.jar
 ENTRYPOINT ["java","-jar","/application.jar"]

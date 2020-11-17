@@ -1,0 +1,56 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: alexandre.guidin@gmail.com
+      changes:
+
+        ##########
+        # Tables #
+        ##########
+        - createTable:
+            tableName: user_sample_table
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: current_datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: true
+
+        ##########
+        # Index #
+        ##########
+        - createIndex:
+            tableName: user_sample_table
+            indexName: idx_user_email
+            columns:
+              - column:
+                  name: email
+                  type: varchar

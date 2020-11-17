@@ -1,0 +1,43 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="org.template.core.log.LogJsonAppender"/>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.hibernate" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="com.zaxxer.hikari.HikariDataSource" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="springfox" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.apache" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" additivity="false" level="ERROR">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="liquibase" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="com.amazon.sqs.javamessaging" additivity="false" level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
